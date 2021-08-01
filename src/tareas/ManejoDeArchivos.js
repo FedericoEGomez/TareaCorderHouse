@@ -1,23 +1,12 @@
-//import fs = require('fs')
-import * as fs from 'fs';
-
-interface archivo {
-    title:string,
-    price:number,
-    thumbnail:string,
-    id:number 
-}
-
+const fs = require('fs');
 
 class Contenedor {
 
     //contructor del objeto
-    public archivo: archivo
-
-    constructor(archivo:archivo) {
+    constructor(archivo) {
         this.archivo=archivo;
-        this.archivo.id = 0;
-        this.archivo.data =[];
+        this.id = 0;
+        this.data =[];
     }
 
     //metodo para guardar el objeto dentro del archivo
@@ -73,22 +62,22 @@ class Contenedor {
 
 }
 
-const resultado = new Contenedor('productos.txt');
+const resultado = new Contenedor('product.txt');
 const func = async () => {
     await resultado.save({
-        title:"notebook",
-        price:123,
-        thumbnail:'www.fotos.com/foto1'
+        title:"cosa1",
+        price:111,
+        thumbnail:'www.page.com/foto1'
     });
     await resultado.save({
-        title:"celular",
-        price:456,
-        thumbnail:'www.fotos.com/foto2'
+        title:"cosa2",
+        price:222,
+        thumbnail:'www.page.com/foto2'
     });
     await resultado.save({
-        title:"PC",
-        price:789,
-        thumbnail:'www.fotos.com/foto3'
+        title:"cosa3",
+        price:333,
+        thumbnail:'www.page.com/foto3'
     });
     const data = await resultado.getAll();
     console.log('getAll()',data);
